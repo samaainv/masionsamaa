@@ -1,0 +1,768 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Masion Samaa' | Luxury Real Estate Investment</title>
+  <meta name="description" content="Curated portfolio of premier properties across Egypt's most prestigious developments." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Darker+Grotesque:wght@500;600;700;800;900&family=Playfair+Display:ital,wght@0,700;0,800;1,700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{
+      font-family:'Inter',system-ui,sans-serif;
+      background:#0A2E24;
+      color:#FAF3E9;
+      line-height:1.6;
+      overflow-x:hidden;
+      -webkit-font-smoothing:antialiased
+    }
+    .font-grotesque{font-family:'Darker Grotesque',sans-serif}
+    img{max-width:100%;display:block}
+    a{color:inherit;text-decoration:none}
+    ul{list-style:none}
+    .container{max-width:80rem;margin:0 auto;padding:0 2rem}
+    @media(max-width:768px){.container{padding:0 1.25rem}}
+
+    /* Header */
+    .header{
+      position:fixed;top:0;left:0;right:0;z-index:50;
+      padding:1rem 2rem;
+      display:flex;align-items:center;justify-content:space-between;
+      background:rgba(10,46,36,.92);
+      backdrop-filter:blur(12px);
+      border-bottom:1px solid rgba(201,167,105,.15)
+    }
+    .logo{font-size:1.5rem;font-weight:800;letter-spacing:.04em;display:flex;align-items:center;gap:.6rem;font-family:'Darker Grotesque',sans-serif;text-transform:uppercase}
+    .logo span{color:#C9A769}
+    .logo-icon{width:2rem;height:2rem;border:2px solid #C9A769;display:flex;align-items:center;justify-content:center;font-size:.55rem;letter-spacing:.12em;color:#C9A769;font-weight:800;font-family:'Darker Grotesque',sans-serif}
+    .nav{display:flex;gap:2.5rem;align-items:center}
+    .nav a{
+      font-size:.8rem;letter-spacing:.15em;text-transform:uppercase;
+      color:rgba(250,243,233,.55);transition:color .3s;position:relative;font-family:'Darker Grotesque',sans-serif;font-weight:600
+    }
+    .nav a:hover,.nav a.active{color:#C9A769}
+    .nav a::after{
+      content:'';position:absolute;bottom:-4px;left:0;width:0;height:1px;
+      background:#C9A769;transition:width .3s
+    }
+    .nav a:hover::after,.nav a.active::after{width:100%}
+    .nav .cta-nav{
+      background:#C9A769;color:#0A2E24;padding:.55rem 1.5rem;
+      font-weight:600;letter-spacing:.1em
+    }
+    .nav .cta-nav::after{display:none}
+    .nav .cta-nav:hover{background:#e0be85;color:#0A2E24}
+    .menu-toggle{
+      display:none;background:none;border:none;cursor:pointer;
+      width:2rem;height:2rem;flex-direction:column;justify-content:center;gap:5px
+    }
+    .menu-toggle span{display:block;width:100%;height:1.5px;background:#FAF3E9;transition:all .3s}
+
+    /* Buttons */
+    .btn{
+      display:inline-flex;align-items:center;gap:.5rem;
+      padding:.85rem 2.25rem;font-size:.8rem;font-weight:500;
+      letter-spacing:.12em;text-transform:uppercase;
+      transition:all .3s;cursor:pointer;border:none;font-family:'Darker Grotesque',sans-serif;font-weight:600
+    }
+    .btn-primary{background:#C9A769;color:#0A2E24}
+    .btn-primary:hover{background:#e0be85;transform:translateY(-1px)}
+    .btn-outline{background:transparent;border:1px solid #C9A769;color:#C9A769}
+    .btn-outline:hover{background:#C9A769;color:#0A2E24}
+    .btn-outline-light{background:transparent;border:1px solid rgba(250,243,233,.25);color:rgba(250,243,233,.7)}
+    .btn-outline-light:hover{background:rgba(250,243,233,.08);color:#FAF3E9;border-color:rgba(250,243,233,.4)}
+
+    /* Sections */
+    section{padding:6rem 0}
+    .section-label{
+      font-size:.65rem;letter-spacing:.35em;text-transform:uppercase;
+      color:#C9A769;margin-bottom:.6rem;font-weight:600;font-family:'Darker Grotesque',sans-serif
+    }
+    .section-title{
+      font-family:'Darker Grotesque',sans-serif;
+      font-size:3rem;font-weight:800;margin-bottom:.75rem;line-height:1.08;letter-spacing:-.01em
+    }
+    .section-desc{
+      color:rgba(250,243,233,.45);font-weight:300;max-width:36rem;line-height:1.75;font-size:.95rem
+    }
+    .section-desc.light{color:rgba(10,46,36,.5)}
+    .text-center{text-align:center}
+    .mx-auto{margin-left:auto;margin-right:auto}
+
+    /* Hero */
+    .hero{
+      min-height:100vh;display:flex;align-items:center;
+      padding:6rem 0 4rem;position:relative;overflow:hidden;
+      background:linear-gradient(160deg,#061e16 0%,#0A2E24 35%,#0d3828 65%,#0A2E24 100%)
+    }
+    .hero::before{
+      content:'';position:absolute;inset:0;
+      background:
+        radial-gradient(ellipse at 15% 85%,rgba(201,167,105,.1) 0%,transparent 55%),
+        radial-gradient(ellipse at 85% 15%,rgba(201,167,105,.06) 0%,transparent 50%)
+    }
+    .hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;position:relative;z-index:1}
+    .hero-content{max-width:36rem}
+    .hero-subtitle{
+      font-size:.7rem;letter-spacing:.4em;text-transform:uppercase;
+      color:#C9A769;font-weight:700;margin-bottom:1rem;font-family:'Darker Grotesque',sans-serif
+    }
+    .hero h1{
+      font-family:'Darker Grotesque',sans-serif;
+      font-size:4.5rem;font-weight:900;line-height:1.05;margin-bottom:1.5rem;letter-spacing:-.02em
+    }
+    .hero h1 em{color:#C9A769;font-style:normal}
+    .hero p{
+      font-size:1rem;color:rgba(250,243,233,.5);font-weight:300;
+      line-height:1.8;margin-bottom:2.5rem;max-width:32rem
+    }
+    .hero-buttons{display:flex;gap:1rem;flex-wrap:wrap}
+    .hero-visual{
+      height:32rem;
+      background:linear-gradient(145deg,#0d3828,#0A2E24);
+      border:1px solid rgba(201,167,105,.15);
+      display:flex;align-items:center;justify-content:center;flex-direction:column;
+      position:relative;overflow:hidden;padding:2rem
+    }
+    .hero-visual::before{content:'';position:absolute;inset:2.5rem;border:1px solid rgba(201,167,105,.1)}
+    .hero-visual-text{
+      font-family:'Darker Grotesque',sans-serif;
+      font-size:1.75rem;font-weight:700;color:rgba(201,167,105,.2);
+      text-align:center;z-index:1;line-height:1.4;letter-spacing:-.01em
+    }
+    .hero-visual-sub{
+      font-size:.55rem;letter-spacing:.45em;text-transform:uppercase;
+      color:rgba(250,243,233,.08);margin-top:2rem;z-index:1
+    }
+
+    /* Stats */
+    .stats-section{border-top:1px solid rgba(201,167,105,.1);border-bottom:1px solid rgba(201,167,105,.1);padding:0}
+    .stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2rem;padding:3.5rem 0}
+    .stat-item{text-align:center}
+    .stat-number{font-family:'Darker Grotesque',sans-serif;font-size:3.25rem;font-weight:800;color:#C9A769;line-height:1;letter-spacing:-.02em}
+    .stat-label{font-size:.8rem;color:rgba(250,243,233,.4);margin-top:.4rem;letter-spacing:.05em;text-transform:uppercase}
+
+    /* Developers */
+    .dev-section{background:#0d3828}
+    .dev-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;margin-top:3rem}
+    .dev-card{
+      border:1px solid rgba(201,167,105,.12);padding:2rem 1.5rem;
+      text-align:center;transition:all .3s;background:rgba(10,46,36,.5)
+    }
+    .dev-card:hover{border-color:rgba(201,167,105,.35);transform:translateY(-3px)}
+    .dev-letter{
+      width:4rem;height:4rem;margin:0 auto 1.25rem;
+      background:rgba(201,167,105,.08);border:1px solid rgba(201,167,105,.2);
+      display:flex;align-items:center;justify-content:center;
+      font-family:'Playfair Display',serif;font-size:.6rem;font-weight:700;
+      letter-spacing:.05em;color:#C9A769
+    }
+    .dev-card h4{font-family:'Darker Grotesque',sans-serif;font-size:1.2rem;font-weight:700;margin-bottom:.4rem}
+    .dev-card p{font-size:.8rem;color:rgba(250,243,233,.4);margin-bottom:.75rem;font-weight:300;line-height:1.6}
+    .dev-meta{font-size:.65rem;color:rgba(201,167,105,.5);letter-spacing:.1em;text-transform:uppercase}
+
+    /* Properties */
+    .props-section{background:#0A2E24}
+    .props-header{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:2.5rem;flex-wrap:wrap;gap:1.5rem}
+    .props-filter{display:flex;gap:.5rem;flex-wrap:wrap}
+    .props-filter button{
+      padding:.5rem 1.25rem;font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;
+      background:transparent;border:1px solid rgba(201,167,105,.2);
+      color:rgba(250,243,233,.45);cursor:pointer;transition:all .3s;font-family:'Darker Grotesque',sans-serif;font-weight:600;
+      border-radius:0
+    }
+    .props-filter button.active,.props-filter button:hover{background:#C9A769;color:#0A2E24;border-color:#C9A769}
+    .props-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:1.5rem}
+    .prop-card{
+      background:rgba(10,46,36,.6);border:1px solid rgba(201,167,105,.1);
+      overflow:hidden;transition:all .4s;cursor:pointer
+    }
+    .prop-card:hover{transform:translateY(-6px);border-color:rgba(201,167,105,.35);box-shadow:0 20px 50px -15px rgba(0,0,0,.4)}
+    .prop-card:hover .prop-img img{transform:scale(1.06)}
+    .prop-img{height:13rem;overflow:hidden;position:relative;background:#0d3828}
+    .prop-img img{width:100%;height:100%;object-fit:cover;transition:transform .5s}
+    .prop-badge{
+      position:absolute;top:.75rem;left:.75rem;
+      background:#C9A769;color:#0A2E24;font-size:.6rem;font-weight:700;
+      padding:.2rem .7rem;letter-spacing:.08em;text-transform:uppercase;
+      z-index:2;font-family:'Darker Grotesque',sans-serif
+    }
+    .prop-status{
+      position:absolute;top:.75rem;right:.75rem;z-index:2;
+      font-size:.55rem;letter-spacing:.12em;text-transform:uppercase;
+      padding:.2rem .7rem;background:rgba(10,46,36,.85);color:rgba(250,243,233,.8);
+      backdrop-filter:blur(4px)
+    }
+    .prop-body{padding:1.25rem}
+    .prop-developer{
+      font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;
+      color:#C9A769;font-weight:600;margin-bottom:.35rem;font-family:'Darker Grotesque',sans-serif
+    }
+    .prop-name{font-family:'Darker Grotesque',sans-serif;font-size:1.2rem;font-weight:700;margin-bottom:.4rem;letter-spacing:-.01em}
+    .prop-meta{display:flex;gap:1.25rem;margin-bottom:.75rem;font-size:.8rem;color:rgba(250,243,233,.4)}
+    .prop-meta span{display:flex;align-items:center;gap:.35rem}
+    .prop-meta i{font-size:.95rem;color:#C9A769}
+    .prop-foot{display:flex;justify-content:space-between;align-items:center;padding-top:.75rem;border-top:1px solid rgba(201,167,105,.08)}
+    .prop-price{font-size:1.1rem;font-weight:600;color:#C9A769}
+    .prop-price small{font-size:.6rem;font-weight:400;color:rgba(250,243,233,.3)}
+    .prop-location{font-size:.7rem;color:rgba(250,243,233,.35);letter-spacing:.08em}
+
+    /* Featured */
+    .featured-section{background:#0d3828}
+    .featured-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;margin-top:3rem}
+    .featured-visual{
+      height:28rem;
+      background:linear-gradient(145deg,#0d3828,#0A2E24);
+      border:1px solid rgba(201,167,105,.12);
+      display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden
+    }
+    .featured-visual::before{content:'';position:absolute;inset:2rem;border:1px solid rgba(201,167,105,.1)}
+    .featured-quote{
+      font-family:'Darker Grotesque',sans-serif;font-size:2rem;font-weight:800;
+      color:rgba(201,167,105,.15);text-align:center;z-index:1;line-height:1.3;letter-spacing:-.01em
+    }
+    .featured-quote span{color:rgba(201,167,105,.3)}
+    .featured-list{display:grid;gap:1.5rem}
+    .featured-item{display:flex;gap:1rem;align-items:flex-start}
+    .featured-icon{
+      width:2.75rem;height:2.75rem;flex-shrink:0;
+      background:rgba(201,167,105,.08);border:1px solid rgba(201,167,105,.18);
+      display:flex;align-items:center;justify-content:center;color:#C9A769;font-size:1.2rem
+    }
+    .featured-item h4{font-family:'Darker Grotesque',sans-serif;font-size:1.15rem;font-weight:700;margin-bottom:.15rem}
+    .featured-item p{font-size:.8rem;color:rgba(250,243,233,.4);font-weight:300;line-height:1.6}
+
+    /* Table */
+    .table-section{background:#0A2E24}
+    .table-wrap{overflow-x:auto;margin-top:2.5rem;border:1px solid rgba(201,167,105,.08)}
+    .table-wrap table{width:100%;border-collapse:collapse;font-size:.8rem;min-width:680px}
+    .table-wrap th{
+      background:rgba(201,167,105,.08);color:#C9A769;
+      padding:.75rem 1rem;text-align:left;font-size:.65rem;
+      letter-spacing:.12em;text-transform:uppercase;font-weight:700;font-family:'Darker Grotesque',sans-serif
+    }
+    .table-wrap td{
+      padding:.65rem 1rem;border-bottom:1px solid rgba(201,167,105,.04);
+      color:rgba(250,243,233,.55);font-weight:300
+    }
+    .table-wrap tr:hover td{background:rgba(201,167,105,.03)}
+    .table-wrap .td-name{color:#FAF3E9;font-weight:400}
+    .table-wrap .td-price{color:#C9A769;font-weight:600}
+
+    /* Team */
+    .team-section{background:#0d3828}
+    .team-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:1.25rem;margin-top:3rem}
+    .team-card{
+      border:1px solid rgba(201,167,105,.1);padding:2rem 1.25rem;
+      text-align:center;background:rgba(10,46,36,.4);transition:all .3s
+    }
+    .team-card:hover{border-color:rgba(201,167,105,.3);transform:translateY(-3px)}
+    .team-avatar{
+      width:4rem;height:4rem;margin:0 auto 1rem;border-radius:50%;
+      background:rgba(201,167,105,.1);border:1px solid rgba(201,167,105,.2);
+      display:flex;align-items:center;justify-content:center;
+      color:#C9A769;font-size:1.5rem
+    }
+    .team-card h4{font-family:'Darker Grotesque',sans-serif;font-size:1.1rem;font-weight:700;margin-bottom:.1rem}
+    .team-card .role{font-size:.65rem;letter-spacing:.15em;text-transform:uppercase;color:#C9A769;font-weight:600;margin-bottom:.5rem}
+    .team-card .phone{font-size:.8rem;color:rgba(250,243,233,.4)}
+    .team-card .wa-link{
+      display:inline-flex;align-items:center;gap:.35rem;
+      margin-top:.6rem;font-size:.7rem;color:#C9A769;letter-spacing:.1em;
+      text-transform:uppercase;font-weight:600;transition:color .3s
+    }
+    .team-card .wa-link:hover{color:#FAF3E9}
+
+    /* Contact */
+    .contact-section{background:#0A2E24}
+    .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;margin-top:3rem}
+    .contact-info h3{font-family:'Darker Grotesque',sans-serif;font-size:1.5rem;font-weight:700;margin-bottom:.6rem;letter-spacing:-.01em}
+    .contact-info p{color:rgba(250,243,233,.4);font-weight:300;line-height:1.75;margin-bottom:2rem;font-size:.9rem}
+    .c-detail{margin-bottom:.85rem}
+    .c-label{font-size:.6rem;letter-spacing:.15em;text-transform:uppercase;color:#C9A769;font-weight:600;margin-bottom:.15rem}
+    .c-value{font-size:.9rem;color:rgba(250,243,233,.7)}
+    .contact-form{display:grid;gap:1.25rem}
+    .f-group{display:flex;flex-direction:column;gap:.35rem}
+    .f-group label{
+      font-size:.65rem;letter-spacing:.15em;text-transform:uppercase;
+      color:rgba(250,243,233,.35);font-weight:600
+    }
+    .f-group input,.f-group textarea{
+      background:rgba(10,46,36,.6);border:1px solid rgba(201,167,105,.2);
+      padding:.8rem 1rem;color:#FAF3E9;font-size:.9rem;
+      font-family:'Inter',sans-serif;transition:border-color .3s
+    }
+    .f-group input:focus,.f-group textarea:focus{outline:none;border-color:#C9A769}
+    .f-group input::placeholder,.f-group textarea::placeholder{color:rgba(250,243,233,.15)}
+    .f-group textarea{resize:none;min-height:6rem}
+
+    /* Footer */
+    .footer{border-top:1px solid rgba(201,167,105,.1);padding:4rem 0 0}
+    .footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:3rem;margin-bottom:2.5rem}
+    .footer-brand .logo{margin-bottom:.75rem}
+    .footer-brand p{font-size:.8rem;color:rgba(250,243,233,.35);font-weight:300;line-height:1.7;max-width:20rem}
+    .f-col h5{font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:#C9A769;margin-bottom:1rem;font-family:'Darker Grotesque',sans-serif;font-weight:700}
+    .f-col a{display:block;font-size:.8rem;color:rgba(250,243,233,.3);margin-bottom:.5rem;transition:color .3s}
+    .f-col a:hover{color:#C9A769}
+    .footer-btm{
+      border-top:1px solid rgba(201,167,105,.06);padding:1.5rem 0;
+      display:flex;justify-content:space-between;align-items:center;
+      font-size:.7rem;color:rgba(250,243,233,.2)
+    }
+    .footer-btm span{color:#C9A769}
+
+    @media(max-width:1024px){
+      .hero-grid{grid-template-columns:1fr;gap:2rem}
+      .hero-visual{display:none}
+      .dev-grid{grid-template-columns:repeat(2,1fr)}
+      .featured-grid{grid-template-columns:1fr;gap:2rem}
+      .footer-grid{grid-template-columns:1fr 1fr}
+    }
+    @media(max-width:768px){
+      .menu-toggle{display:flex}
+      .nav{display:none;position:absolute;top:100%;left:0;right:0;flex-direction:column;
+        background:rgba(10,46,36,.98);padding:1.5rem 2rem;gap:1rem;
+        border-bottom:1px solid rgba(201,167,105,.15)}
+      .nav.open{display:flex}
+      .hero h1{font-size:2.5rem}
+      .stats-grid{grid-template-columns:repeat(2,1fr);gap:1.5rem;padding:2.5rem 0}
+      .section-title{font-size:2.25rem}
+      .contact-grid{grid-template-columns:1fr;gap:2rem}
+      .team-grid{grid-template-columns:repeat(2,1fr)}
+      .footer-grid{grid-template-columns:1fr;gap:2rem}
+      section{padding:4rem 0}
+    }
+    @media(max-width:480px){
+      .hero h1{font-size:2rem}
+      .stat-number{font-size:2.25rem}
+      .dev-grid,.team-grid,.props-grid{grid-template-columns:1fr}
+    }
+  </style>
+</head>
+<body>
+
+  <header class="header">
+    <div class="logo"><div class="logo-icon">MS</div> Masion <span>Samaa'</span></div>
+    <button class="menu-toggle" onclick="document.querySelector('.nav').classList.toggle('open')" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+    <nav class="nav">
+      <a href="#properties" class="active">Properties</a>
+      <a href="#developers">Developers</a>
+      <a href="#team">Team</a>
+      <a href="#contact" class="cta-nav">Contact</a>
+    </nav>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="container" style="position:relative;z-index:1;width:100%">
+      <div class="hero-grid">
+        <div class="hero-content">
+          <p class="hero-subtitle">Curated Luxury Living in Egypt</p>
+          <h1>Where <em>Heritage</em><br />Meets Modern Luxury</h1>
+          <p>Discover a curated portfolio of premier properties across Egypt's most prestigious developments — from the Mediterranean shores of the North Coast to the heart of New Cairo.</p>
+          <div class="hero-buttons">
+            <a href="#properties" class="btn btn-primary"><i class='bx bx-search'></i> View Properties</a>
+            <a href="#contact" class="btn btn-outline"><i class='bx bx-calendar'></i> Schedule a Tour</a>
+          </div>
+        </div>
+        <div class="hero-visual">
+          <div class="hero-visual-text">"French elegance<br/>for Egyptian<br/><span style="color:rgba(201,167,105,.35)">living</span>"</div>
+          <div class="hero-visual-sub">Since 2024</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats -->
+  <div class="stats-section">
+    <div class="container">
+      <div class="stats-grid">
+        <div class="stat-item">
+          <div class="stat-number">500+</div>
+          <div class="stat-label">Properties Listed</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">20+</div>
+          <div class="stat-label">Partner Developers</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">15+</div>
+          <div class="stat-label">Prime Locations</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">99%</div>
+          <div class="stat-label">Client Satisfaction</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Developers -->
+  <section class="dev-section" id="developers">
+    <div class="container">
+      <p class="section-label">Our Partners</p>
+      <h2 class="section-title">Trusted Developers</h2>
+      <p class="section-desc" style="margin-bottom:1rem">We partner with Egypt's most prestigious developers to bring you exclusive access to premier properties.</p>
+      <div class="dev-grid">
+        <div class="dev-card">
+          <div class="dev-letter">EP</div>
+          <h4>Emaar Properties</h4>
+          <p>Global developer known for high-end master-planned communities and iconic landmarks.</p>
+          <div class="dev-meta">Est. 1997 &middot; 50+ Projects</div>
+        </div>
+        <div class="dev-card">
+          <div class="dev-letter">PH</div>
+          <h4>Palm Hills Development</h4>
+          <p>Leading developer in Egypt specializing in integrated residential and commercial projects.</p>
+          <div class="dev-meta">Est. 1997 &middot; 40+ Projects</div>
+        </div>
+        <div class="dev-card">
+          <div class="dev-letter">MM</div>
+          <h4>Madinet Masr</h4>
+          <p>Large-scale urban developments that integrate modern living with Egyptian heritage.</p>
+          <div class="dev-meta">Est. 1959 &middot; 20+ Projects</div>
+        </div>
+        <div class="dev-card">
+          <div class="dev-letter">TMG</div>
+          <h4>Talaat Moustafa Group</h4>
+          <p>The group behind Egypt's largest private-sector self-sustained cities.</p>
+          <div class="dev-meta">Est. 1970 &middot; 30+ Projects</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Properties -->
+  <section class="props-section" id="properties">
+    <div class="container">
+      <div class="props-header">
+        <div>
+          <p class="section-label">Our Portfolio</p>
+          <h2 class="section-title" style="margin-bottom:0">Featured Properties</h2>
+        </div>
+        <div class="props-filter">
+          <button class="active" onclick="filterProps('all',this)">All</button>
+          <button onclick="filterProps('Apartment',this)">Apartments</button>
+          <button onclick="filterProps('Villa',this)">Villas</button>
+          <button onclick="filterProps('Penthouse',this)">Penthouses</button>
+          <button onclick="filterProps('Chalet',this)">Chalets</button>
+          <button onclick="filterProps('Townhouse',this)">Townhouses</button>
+        </div>
+      </div>
+      <div class="props-grid" id="propsGrid"></div>
+    </div>
+  </section>
+
+  <!-- Why Choose Us -->
+  <section class="featured-section">
+    <div class="container">
+      <p class="section-label">Why Choose Us</p>
+      <h2 class="section-title">The Masion Samaa' Experience</h2>
+      <p class="section-desc" style="margin-bottom:1rem">Decades of combined experience in Egyptian real estate, connecting discerning investors with properties that define luxury living.</p>
+      <div class="featured-grid">
+        <div class="featured-visual">
+          <div class="featured-quote">"Curating Egypt's<br/>finest<br/><span>addresses"</span></div>
+        </div>
+        <div class="featured-list">
+          <div class="featured-item">
+            <div class="featured-icon"><i class='bx bx-shield-quarter'></i></div>
+            <div>
+              <h4>Trusted Expertise</h4>
+              <p>Deep knowledge of Egypt's luxury real estate market and regulatory landscape.</p>
+            </div>
+          </div>
+          <div class="featured-item">
+            <div class="featured-icon"><i class='bx bx-building-house'></i></div>
+            <div>
+              <h4>Premium Portfolio</h4>
+              <p>Exclusive access to off-market properties and premier developments across Egypt.</p>
+            </div>
+          </div>
+          <div class="featured-item">
+            <div class="featured-icon"><i class='bx bx-conversation'></i></div>
+            <div>
+              <h4>Concierge Service</h4>
+              <p>End-to-end support from property tours through closing and beyond.</p>
+            </div>
+          </div>
+          <div class="featured-item">
+            <div class="featured-icon"><i class='bx bx-line-chart'></i></div>
+            <div>
+              <h4>Investment Advisory</h4>
+              <p>Data-driven insights to maximize ROI across Egypt's fastest-growing markets.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Table -->
+  <section class="table-section">
+    <div class="container">
+      <p class="section-label">Market Data</p>
+      <h2 class="section-title">Recent Listings</h2>
+      <p class="section-desc" style="margin-bottom:2rem">A curated selection of available properties across our partner developments.</p>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Project</th>
+              <th>Type</th>
+              <th>Area</th>
+              <th>Beds</th>
+              <th>Finishing</th>
+              <th>Delivery</th>
+              <th>Price (EGP)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td class="td-name">Uptown Cairo — Fountain Side</td><td>Apartment</td><td>65 m²</td><td>3</td><td>Fully Finished</td><td>Delivered</td><td class="td-price">21,000,000</td></tr>
+            <tr><td class="td-name">Capital Gardens Standalone</td><td>Villa</td><td>620 m²</td><td>6</td><td>Core &amp; Shell</td><td>2027</td><td class="td-price">37,500,000</td></tr>
+            <tr><td class="td-name">Taj City — Park Residence</td><td>Apartment</td><td>85 m²</td><td>1</td><td>Fully Finished</td><td>Delivered</td><td class="td-price">6,500,000</td></tr>
+            <tr><td class="td-name">Zahw — Phase 1</td><td>Villa</td><td>250 m²</td><td>4</td><td>Core &amp; Shell</td><td>2026</td><td class="td-price">12,500,000</td></tr>
+            <tr><td class="td-name">Celia — East Village</td><td>Apartment</td><td>125 m²</td><td>2</td><td>Fully Finished</td><td>2025</td><td class="td-price">8,900,000</td></tr>
+            <tr><td class="td-name">Madinaty — Four Season Villa</td><td>Villa</td><td>276 m²</td><td>4</td><td>Core &amp; Shell</td><td>2027</td><td class="td-price">42,800,000</td></tr>
+            <tr><td class="td-name">Hacienda White Standalone</td><td>Villa</td><td>350 m²</td><td>5</td><td>Fully Furnished</td><td>RTM</td><td class="td-price">72,000,000</td></tr>
+            <tr><td class="td-name">Silver Sands Chalet</td><td>Chalet</td><td>120 m²</td><td>3</td><td>Fully Finished</td><td>2027</td><td class="td-price">26,500,000</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- Team -->
+  <section class="team-section" id="team">
+    <div class="container">
+      <p class="section-label">Our Team</p>
+      <h2 class="section-title">Property Consultants</h2>
+      <p class="section-desc" style="margin-bottom:1rem">Meet our experienced team ready to help you find your perfect property.</p>
+      <div class="team-grid">
+        <div class="team-card">
+          <div class="team-avatar"><i class='bx bx-user'></i></div>
+          <h4>Ali Yasser</h4>
+          <div class="role">Property Consultant</div>
+          <div class="phone">+20 10 30959365</div>
+          <a href="https://wa.me/201030959365" target="_blank" class="wa-link"><i class='bx bxl-whatsapp'></i> WhatsApp</a>
+        </div>
+        <div class="team-card">
+          <div class="team-avatar"><i class='bx bx-user'></i></div>
+          <h4>Body Rashwaan</h4>
+          <div class="role">Property Consultant</div>
+          <div class="phone">+20 11 23105444</div>
+          <a href="https://wa.me/201123105444" target="_blank" class="wa-link"><i class='bx bxl-whatsapp'></i> WhatsApp</a>
+        </div>
+        <div class="team-card">
+          <div class="team-avatar"><i class='bx bx-user'></i></div>
+          <h4>Foqad</h4>
+          <div class="role">Property Consultant</div>
+          <div class="phone">+20 12 76179221</div>
+          <a href="https://wa.me/201276179221" target="_blank" class="wa-link"><i class='bx bxl-whatsapp'></i> WhatsApp</a>
+        </div>
+        <div class="team-card">
+          <div class="team-avatar"><i class='bx bx-user'></i></div>
+          <h4>Mostafa Atef</h4>
+          <div class="role">Property Consultant</div>
+          <div class="phone">+20 11 41723898</div>
+          <a href="https://wa.me/201141723898" target="_blank" class="wa-link"><i class='bx bxl-whatsapp'></i> WhatsApp</a>
+        </div>
+        <div class="team-card">
+          <div class="team-avatar"><i class='bx bx-user'></i></div>
+          <h4>Ashraf Mohsen</h4>
+          <div class="role">Property Consultant</div>
+          <div class="phone">+20 10 90060824</div>
+          <a href="https://wa.me/201090060824" target="_blank" class="wa-link"><i class='bx bxl-whatsapp'></i> WhatsApp</a>
+        </div>
+        <div class="team-card">
+          <div class="team-avatar"><i class='bx bx-file'></i></div>
+          <h4>Habiba Mohsen</h4>
+          <div class="role">Secretary</div>
+          <div class="phone">+20 10 62335799</div>
+          <a href="https://wa.me/201062335799" target="_blank" class="wa-link"><i class='bx bxl-whatsapp'></i> WhatsApp</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section class="contact-section" id="contact">
+    <div class="container">
+      <p class="section-label">Get in Touch</p>
+      <h2 class="section-title">Begin Your Journey</h2>
+      <p class="section-desc" style="margin-bottom:2rem">Whether you're looking for a primary residence, vacation home, or investment opportunity, our team is ready to assist.</p>
+      <div class="contact-grid">
+        <div class="contact-info">
+          <h3>Let's Find Your Perfect Property</h3>
+          <p>With offices in Cairo and a presence across Egypt's key markets, we offer personalized service every step of the way.</p>
+          <div class="c-detail">
+            <div class="c-label">Address</div>
+            <div class="c-value">26 July St., Zamalek, Cairo, Egypt</div>
+          </div>
+          <div class="c-detail">
+            <div class="c-label">Phone</div>
+            <div class="c-value">+20 10 30959365</div>
+          </div>
+          <div class="c-detail">
+            <div class="c-label">Email</div>
+            <div class="c-value">info@masonsamaa.com</div>
+          </div>
+          <div class="c-detail">
+            <div class="c-label">Working Hours</div>
+            <div class="c-value">Sun–Thu, 9:00 AM – 7:00 PM</div>
+          </div>
+        </div>
+        <form class="contact-form" onsubmit="event.preventDefault();alert('Thank you for your inquiry. We will contact you shortly.');">
+          <div class="f-group">
+            <label for="name">Full Name</label>
+            <input type="text" id="name" placeholder="Your name" required />
+          </div>
+          <div class="f-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" placeholder="your@email.com" required />
+          </div>
+          <div class="f-group">
+            <label for="phone">Phone</label>
+            <input type="tel" id="phone" placeholder="+20 XXX XXX XXXX" required />
+          </div>
+          <div class="f-group">
+            <label for="message">Message</label>
+            <textarea id="message" placeholder="Tell us about your preferences..."></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary" style="width:100%;"><i class='bx bx-send'></i> Send Inquiry</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="logo"><div class="logo-icon">MS</div> Masion <span>Samaa'</span></div>
+          <p>Curated luxury real estate investments across Egypt's most prestigious developments. French-inspired elegance for Egyptian living.</p>
+        </div>
+        <div class="f-col">
+          <h5>Properties</h5>
+          <a href="#">Featured Listings</a>
+          <a href="#">Apartments</a>
+          <a href="#">Villas</a>
+          <a href="#">Chalets</a>
+        </div>
+        <div class="f-col">
+          <h5>Company</h5>
+          <a href="#team">Our Team</a>
+          <a href="#contact">Contact</a>
+          <a href="#">Careers</a>
+        </div>
+        <div class="f-col">
+          <h5>Support</h5>
+          <a href="#">FAQ</a>
+          <a href="#">Privacy Policy</a>
+          <a href="https://wa.me/201030959365" target="_blank">WhatsApp</a>
+        </div>
+      </div>
+      <div class="footer-btm">
+        <span>&copy; 2026 Masion <span>Samaa'</span>. All rights reserved.</span>
+        <span>Designed in Egypt</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    var properties = [
+      {name:"SeaShell — Sky Block Villa",type:"Villa",developer:"New Giza",developerShort:"NG",badge:"Premium",status:"Cash",price:"55,000,000",area:"452 m²",beds:"5",baths:"5",finishing:"Fully Furnished",location:"New Giza",img:"https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=600&q=80"},
+      {name:"SwanLake — Twin House",type:"Villa",developer:"Hassan Allam",developerShort:"HA",badge:"New Launch",status:"Cash",price:"36,000,000",area:"240 m²",beds:"3",baths:"3",finishing:"Core & Shell",location:"North Coast",img:"https://images.unsplash.com/photo-1595927522701-7b96b94e1b9e?w=600&q=80"},
+      {name:"Uptown Cairo — Fountain Side",type:"Apartment",developer:"Emaar Properties",developerShort:"EP",badge:"Featured",status:"Delivered",price:"21,000,000",area:"65 m²",beds:"3",baths:"3",finishing:"Fully Finished",location:"Mokattam",img:"https://images.unsplash.com/photo-1560448204-e02f11c3d0fd?w=600&q=80"},
+      {name:"Capital Gardens Standalone Villa",type:"Villa",developer:"Palm Hills Development",developerShort:"PH",badge:"Luxury",status:"2027",price:"37,500,000",area:"620 m²",beds:"6",baths:"7",finishing:"Core & Shell",location:"New Cairo",img:"https://images.unsplash.com/photo-1564078518343-471b95b48d14?w=600&q=80"},
+      {name:"Taj City — Park Residence",type:"Apartment",developer:"Madinet Masr",developerShort:"MM",badge:"Best Value",status:"Delivered",price:"6,500,000",area:"85 m²",beds:"1",baths:"1",finishing:"Fully Finished",location:"New Cairo",img:"https://images.unsplash.com/photo-1554995207-c18c203602cb?w=600&q=80"},
+      {name:"Zahw — Phase 1 Villa",type:"Villa",developer:"Madinet Masr",developerShort:"MM",badge:"Investment",status:"2026",price:"12,500,000",area:"250 m²",beds:"4",baths:"3",finishing:"Core & Shell",location:"Assiut",img:"https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=600&q=80"},
+      {name:"Celia — East Village",type:"Apartment",developer:"Talaat Moustafa Group",developerShort:"TMG",badge:"New Launch",status:"2025",price:"8,900,000",area:"125 m²",beds:"2",baths:"2",finishing:"Fully Finished",location:"New Admin. Capital",img:"https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=600&q=80"},
+      {name:"Madinaty — Four Season Villa",type:"Villa",developer:"Talaat Moustafa Group",developerShort:"TMG",badge:"Premium",status:"2027",price:"42,800,000",area:"276 m²",beds:"4",baths:"4",finishing:"Core & Shell",location:"New Cairo",img:"https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=600&q=80"},
+      {name:"Hacienda White Standalone",type:"Villa",developer:"Emaar Properties",developerShort:"EP",badge:"Luxury",status:"RTM",price:"72,000,000",area:"350 m²",beds:"5",baths:"5",finishing:"Fully Furnished",location:"North Coast",img:"https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=600&q=80"},
+      {name:"Silver Sands Chalet",type:"Chalet",developer:"Palm Hills Development",developerShort:"PH",badge:"Beachfront",status:"2027",price:"26,500,000",area:"120 m²",beds:"3",baths:"3",finishing:"Fully Finished",location:"North Coast",img:"https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=600&q=80"}
+    ];
+
+    var developers = [
+      {init:"EP",name:"Emaar Properties",desc:"Global developer known for high-end master-planned communities and iconic landmarks.",est:"1997",projects:"50+"},
+      {init:"PH",name:"Palm Hills Development",desc:"Leading developer in Egypt specializing in integrated residential and commercial projects.",est:"1997",projects:"40+"},
+      {init:"MM",name:"Madinet Masr",desc:"Large-scale urban developments that integrate modern living with Egyptian heritage.",est:"1959",projects:"20+"},
+      {init:"TMG",name:"Talaat Moustafa Group",desc:"The group behind Egypt's largest private-sector self-sustained cities.",est:"1970",projects:"30+"}
+    ];
+
+    var team = [
+      {name:"Ali Yasser",role:"Property Consultant",phone:"+20 10 30959365",wa:"201030959365",icon:"bx bx-user"},
+      {name:"Body Rashwaan",role:"Property Consultant",phone:"+20 11 23105444",wa:"201123105444",icon:"bx bx-user"},
+      {name:"Foqad",role:"Property Consultant",phone:"+20 12 76179221",wa:"201276179221",icon:"bx bx-user"},
+      {name:"Mostafa Atef",role:"Property Consultant",phone:"+20 11 41723898",wa:"201141723898",icon:"bx bx-user"},
+      {name:"Ashraf Mohsen",role:"Property Consultant",phone:"+20 10 90060824",wa:"201090060824",icon:"bx bx-user"},
+      {name:"Habiba Mohsen",role:"Secretary",phone:"+20 10 62335799",wa:"201062335799",icon:"bx bx-file"}
+    ];
+
+    var listings = [
+      {name:"SeaShell — Sky Block Villa",type:"Air Block Villa with cabana",area:"452 m²",beds:"5",finishing:"Fully Furnished",delivery:"Cash",price:"55,000,000"},
+      {name:"SwanLake — Twin House",type:"Twin House",area:"240 m²",beds:"3",finishing:"Core & Shell",delivery:"Cash",price:"36,000,000"},
+      {name:"Uptown Cairo — Fountain Side",type:"Apartment",area:"65 m²",beds:"3",finishing:"Fully Finished",delivery:"Delivered",price:"21,000,000"},
+      {name:"Capital Gardens Standalone",type:"Villa",area:"620 m²",beds:"6",finishing:"Core & Shell",delivery:"2027",price:"37,500,000"},
+      {name:"Taj City — Park Residence",type:"Apartment",area:"85 m²",beds:"1",finishing:"Fully Finished",delivery:"Delivered",price:"6,500,000"},
+      {name:"Zahw — Phase 1",type:"Villa",area:"250 m²",beds:"4",finishing:"Core & Shell",delivery:"2026",price:"12,500,000"},
+      {name:"Celia — East Village",type:"Apartment",area:"125 m²",beds:"2",finishing:"Fully Finished",delivery:"2025",price:"8,900,000"},
+      {name:"Madinaty — Four Season Villa",type:"Villa",area:"276 m²",beds:"4",finishing:"Core & Shell",delivery:"2027",price:"42,800,000"},
+      {name:"Hacienda White Standalone",type:"Villa",area:"350 m²",beds:"5",finishing:"Fully Furnished",delivery:"RTM",price:"72,000,000"},
+      {name:"Silver Sands Chalet",type:"Chalet",area:"120 m²",beds:"3",finishing:"Fully Finished",delivery:"2027",price:"26,500,000"}
+    ];
+
+    function renderProperties(items){
+      var g = document.getElementById('propsGrid');
+      g.innerHTML = items.map(function(p){
+        return '<div class="prop-card" data-type="'+p.type+'">'+
+          '<div class="prop-img"><img src="'+p.img+'" alt="'+p.name+'" loading="lazy" />'+
+          '<div class="prop-badge">'+p.badge+'</div>'+
+          '<div class="prop-status">'+p.status+'</div></div>'+
+          '<div class="prop-body">'+
+          '<div class="prop-developer">'+p.developer+'</div>'+
+          '<h3 class="prop-name">'+p.name+'</h3>'+
+          '<div class="prop-meta"><span><i class="bx bx-bed"></i> '+p.beds+'</span><span><i class="bx bx-expand"></i> '+p.area+'</span><span><i class="bx bx-bath"></i> '+p.baths+'</span></div>'+
+          '<div class="prop-foot"><div class="prop-price">EGP '+p.price+' <small>| '+p.finishing+'</small></div><span class="prop-location">'+p.location+'</span></div>'+
+          '</div></div>';
+      }).join('');
+    }
+
+    function renderListings(){
+      var t = document.querySelector('.table-wrap tbody');
+      if(!t) return;
+      t.innerHTML = listings.map(function(l){
+        return '<tr><td class="td-name">'+l.name+'</td><td>'+l.type+'</td><td>'+l.area+'</td><td>'+l.beds+'</td><td>'+l.finishing+'</td><td>'+l.delivery+'</td><td class="td-price">'+l.price+'</td></tr>';
+      }).join('');
+    }
+
+    function filterProps(type, btn){
+      document.querySelectorAll('.props-filter button').forEach(function(b){b.classList.remove('active')});
+      btn.classList.add('active');
+      document.querySelectorAll('.prop-card').forEach(function(card){
+        card.style.display = (type === 'all' || card.dataset.type === type) ? '' : 'none';
+      });
+    }
+
+    renderProperties(properties);
+    renderListings();
+
+    window.addEventListener('scroll', function(){
+      var scrollY = window.scrollY;
+      document.querySelectorAll('.nav a:not(.cta-nav)').forEach(function(link){
+        var section = document.querySelector(link.getAttribute('href'));
+        if(section) {
+          var top = section.offsetTop - 200;
+          var bottom = top + section.offsetHeight;
+          link.classList.toggle('active', scrollY >= top && scrollY < bottom);
+        }
+      });
+    });
+  </script>
+</body>
+</html>
