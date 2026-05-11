@@ -5,6 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Masion Samaa' | Luxury Real Estate Investment</title>
   <meta name="description" content="Curated portfolio of premier properties across Egypt's most prestigious developments." />
+  <meta property="og:title" content="Masion Samaa' | Luxury Real Estate Investment" />
+  <meta property="og:description" content="Curated portfolio of premier properties across Egypt's most prestigious developments." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://samaainv.github.io/masionsamaa" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='4' fill='%230A2E24'/><text x='16' y='22' text-anchor='middle' font-family='serif' font-size='18' font-weight='700' fill='%23C9A769'>MS</text></svg>" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Darker+Grotesque:wght@500;600;700;800;900&family=Playfair+Display:ital,wght@0,700;0,800;1,700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
@@ -522,16 +528,7 @@
               <th>Price (EGP)</th>
             </tr>
           </thead>
-          <tbody>
-            <tr><td class="td-name">Uptown Cairo — Fountain Side</td><td>Apartment</td><td>65 m²</td><td>3</td><td>Fully Finished</td><td>Delivered</td><td class="td-price">21,000,000</td></tr>
-            <tr><td class="td-name">Capital Gardens Standalone</td><td>Villa</td><td>620 m²</td><td>6</td><td>Core &amp; Shell</td><td>2027</td><td class="td-price">37,500,000</td></tr>
-            <tr><td class="td-name">Taj City — Park Residence</td><td>Apartment</td><td>85 m²</td><td>1</td><td>Fully Finished</td><td>Delivered</td><td class="td-price">6,500,000</td></tr>
-            <tr><td class="td-name">Zahw — Phase 1</td><td>Villa</td><td>250 m²</td><td>4</td><td>Core &amp; Shell</td><td>2026</td><td class="td-price">12,500,000</td></tr>
-            <tr><td class="td-name">Celia — East Village</td><td>Apartment</td><td>125 m²</td><td>2</td><td>Fully Finished</td><td>2025</td><td class="td-price">8,900,000</td></tr>
-            <tr><td class="td-name">Madinaty — Four Season Villa</td><td>Villa</td><td>276 m²</td><td>4</td><td>Core &amp; Shell</td><td>2027</td><td class="td-price">42,800,000</td></tr>
-            <tr><td class="td-name">Hacienda White Standalone</td><td>Villa</td><td>350 m²</td><td>5</td><td>Fully Furnished</td><td>RTM</td><td class="td-price">72,000,000</td></tr>
-            <tr><td class="td-name">Silver Sands Chalet</td><td>Chalet</td><td>120 m²</td><td>3</td><td>Fully Finished</td><td>2027</td><td class="td-price">26,500,000</td></tr>
-          </tbody>
+          <tbody></tbody>
         </table>
       </div>
     </div>
@@ -606,18 +603,18 @@
           </div>
           <div class="c-detail">
             <div class="c-label">Phone</div>
-            <div class="c-value">+20 10 30959365</div>
+            <div class="c-value"><a href="tel:+201030959365" style="color:inherit;text-decoration:none">+20 10 30959365</a></div>
           </div>
           <div class="c-detail">
             <div class="c-label">Email</div>
-            <div class="c-value">info@masonsamaa.com</div>
+            <div class="c-value"><a href="mailto:info@masonsamaa.com" style="color:inherit;text-decoration:none">info@masonsamaa.com</a></div>
           </div>
           <div class="c-detail">
             <div class="c-label">Working Hours</div>
             <div class="c-value">Sun–Thu, 9:00 AM – 7:00 PM</div>
           </div>
         </div>
-        <form class="contact-form" onsubmit="event.preventDefault();alert('Thank you for your inquiry. We will contact you shortly.');">
+        <form class="contact-form" id="contactForm">
           <div class="f-group">
             <label for="name">Full Name</label>
             <input type="text" id="name" placeholder="Your name" required />
@@ -649,16 +646,16 @@
         </div>
         <div class="f-col">
           <h5>Properties</h5>
-          <a href="#">Featured Listings</a>
-          <a href="#">Apartments</a>
-          <a href="#">Villas</a>
-          <a href="#">Chalets</a>
+          <a href="#properties">Featured Listings</a>
+          <a href="#properties">Apartments</a>
+          <a href="#properties">Villas</a>
+          <a href="#properties">Chalets</a>
         </div>
         <div class="f-col">
           <h5>Company</h5>
           <a href="#team">Our Team</a>
           <a href="#contact">Contact</a>
-          <a href="#">Careers</a>
+          <a href="mailto:info@masonsamaa.com">Careers</a>
         </div>
         <div class="f-col">
           <h5>Support</h5>
@@ -721,7 +718,7 @@
       var g = document.getElementById('propsGrid');
       g.innerHTML = items.map(function(p){
         return '<div class="prop-card" data-type="'+p.type+'">'+
-          '<div class="prop-img"><img src="'+p.img+'" alt="'+p.name+'" loading="lazy" />'+
+          '<div class="prop-img"><img src="'+p.img+'" alt="'+p.name+'" loading="lazy" onerror="this.onerror=null;this.parentNode.style.background=\'#0d3828\';this.parentNode.innerHTML=\'<div style=display:flex;align-items:center;justify-content:center;height:100%;color:rgba(201,167,105,.15);font-size:2rem;font-family:Darker\\ Grotesque,sans-serif;font-weight:800>MS</div>\'" />'+
           '<div class="prop-badge">'+p.badge+'</div>'+
           '<div class="prop-status">'+p.status+'</div></div>'+
           '<div class="prop-body">'+
@@ -751,6 +748,16 @@
 
     renderProperties(properties);
     renderListings();
+
+    document.getElementById('contactForm').addEventListener('submit', function(e){
+      e.preventDefault();
+      var name = document.getElementById('name').value.trim();
+      var email = document.getElementById('email').value.trim();
+      var phone = document.getElementById('phone').value.trim();
+      var message = document.getElementById('message').value.trim();
+      window.open('https://wa.me/201030959365?text=' + encodeURIComponent('New Inquiry from ' + name + '\nEmail: ' + email + '\nPhone: ' + phone + '\n\n' + message), '_blank');
+      this.reset();
+    });
 
     window.addEventListener('scroll', function(){
       var scrollY = window.scrollY;
